@@ -1,0 +1,45 @@
+body {
+    font-family: 'Inter', sans-serif;
+    overscroll-behavior-y: none; /* Previne o "pulo" ao rolar no mobile */
+}
+
+.font-serif-academic {
+    font-family: 'Merriweather', serif;
+}
+
+/* Estilos base das páginas internas */
+.page {
+    background-color: #fdfdfc; /* Cor de papel levemente off-white */
+    overflow: hidden;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.03); /* Sombra interna suave */
+}
+
+/* Estilo para páginas de Capa Dura (Hardcover) */
+.page-hard {
+    background-color: #1e293b; /* Azul escuro elegante */
+    color: #f8fafc;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Sombras para simular o miolo / encadernação no centro do livro */
+.page-left {
+    box-shadow: inset -15px 0 30px -15px rgba(0, 0, 0, 0.15);
+}
+.page-right {
+    box-shadow: inset 15px 0 30px -15px rgba(0, 0, 0, 0.15);
+}
+
+/* Textura sutil pontilhada para imitar papel impresso */
+.paper-texture {
+    background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+    background-size: 12px 12px;
+}
+
+/* Utilitário para ocultar barra de rolagem onde necessário */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
