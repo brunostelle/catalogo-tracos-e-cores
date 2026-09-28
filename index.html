@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Catálogo: Exposição Traços e Cores</title>
-    
+
+    <!-- ÍCONE DA GUIA (FAVICON) -->
+    <link rel="icon" type="image/png" href="Fotos das Obras\Logo.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = { darkMode: 'class', }</script>
     
@@ -18,7 +21,7 @@
     <!-- Cabeçalho (Mantido com o botão de Modo Escuro) -->
     <header class="w-full bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 px-4 py-3 flex items-center justify-between z-30 shrink-0 shadow-sm transition-colors duration-300">
         <div class="flex items-center gap-3">
-            <img src="Fotos das Obras\logo_utfpr.png" alt="Logótipo UTFPR" class="h-10 w-auto object-contain">
+            <img src="Fotos das Obras/logo_utfpr.png" alt="Logótipo UTFPR" class="h-10 w-auto object-contain">
             <div>
                 <h1 class="text-sm md:text-base font-bold text-slate-800 dark:text-slate-100 tracking-tight">
                     Exposição Traços e Cores
@@ -40,23 +43,28 @@
         </button>
     </header>
 
-    <main class="flex-1 w-full relative flex items-center justify-center p-2 sm:p-6 bg-slate-50/50 dark:bg-slate-900 transition-colors duration-300">
+    <main class="flex-1 w-full p-4 sm:p-6 bg-slate-50/50 dark:bg-slate-900 transition-colors duration-300 flex flex-col overflow-hidden">
         
-        <div class="relative flex justify-center items-center w-full max-w-5xl h-full max-h-[800px]">
+        <!-- WRAPPER INTELIGENTE: Ocupa exatamente o espaço livre da janela (min-h-0 impede que cresça demais) -->
+        <div class="flex-1 w-full min-h-0 relative">
             
+            <!-- LOADING STATE -->
             <div id="loading-state" class="absolute inset-0 flex flex-col items-center justify-center z-20 gap-3 text-indigo-800 dark:text-indigo-400">
-                <svg class="animate-spin w-8 h-8" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
+                <svg class="animate-spin w-8 h-8" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                 <p class="text-sm font-medium animate-pulse">A carregar o catálogo...</p>
             </div>
 
-            <div id="book" class="hidden">
+            <!-- LIVRO: Posicionado de forma absoluta e centralizado com m-auto -->
+            <div id="book" class="hidden absolute inset-0 m-auto w-full h-full max-w-5xl max-h-[800px]">
+                
+                <!-- (Mantenha as suas páginas originais aqui dentro exatamente como estavam) -->
+                
+            </div>
+        </div>
+    
 
                 <!-- 1. Capa Frontal -->
                 <div class="page page-hard p-6 md:p-10 flex flex-col justify-center items-center border-r-4 border-slate-900 text-center" data-density="hard">
-                    <p class="text-xs font-mono text-slate-400 tracking-widest uppercase mb-4">Portfólio Artístico</p>
                     <h2 class="text-3xl md:text-5xl font-bold font-serif-academic leading-tight mb-6 text-white">Exposição<br>Traços e Cores</h2>
                     
                     <div class="h-1 w-24 bg-indigo-500 mx-auto rounded mb-8"></div>
@@ -64,19 +72,16 @@
                     <!-- Logótipo centralizado com mx-auto e block -->
                     <img src="Fotos das Obras\logo_utfpr_branco.png" alt="Logótipo UTFPR" class="h-20 w-auto object-contain mx-auto block mb-8">
                     
-                    <p class="text-sm text-slate-300 font-light max-w-[80%] mx-auto mb-10">Ateliê Traços e Cores<br>UTFPR - Campus Toledo</p>
+                    <p class="text-sm text-slate-300 font-light max-w-[80%] mx-auto mb-10">Ateliê Traços e Cores<br>UTFPR - Campus Toledo<br>Instagram: @tracosecores_utfprtd</p>
                     <div class="mt-auto text-xs text-slate-400 w-full">
                         <p>Coordenação: Prof.ª Rosangela A. B. Assumpção</p>
-                        <p class="mt-2 font-mono">2025</p>
+                        <p class="mt-2 font-mono">2026</p>
                     </div>
                 </div>
 
                 <!-- PÁGINA 2: Verso da Capa -->
                 <div class="page page-hard p-6 flex flex-col justify-end" data-density="hard">
-                    <div class="text-[10px] text-slate-500 border-t border-slate-700 pt-2 opacity-50">
-                        Projeto de Extensão Universitária: "Fazendo Arte com a UTFPR"<br>
-                        Instagram: @atelie_tracos_e_cores_utfpr
-                    </div>
+                    
                 </div>
 
                 <!-- PÁGINA 3: Apresentação Institucional -->
@@ -101,6 +106,36 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- PÁGINA: Vídeo de Apresentação -->
+                <div class="page paper-texture text-slate-800">
+                    <div class="w-full h-full relative overflow-hidden flex flex-col p-6 items-center justify-center">
+                        
+                        <h3 class="text-xl font-bold font-serif-academic text-slate-900 border-b-2 border-indigo-800 pb-2 mb-6 w-full text-center shrink-0">
+                            Conheça o Projeto
+                        </h3>
+                        
+                        <!-- Contentor do Vídeo (Reduzimos a largura máxima e a altura para dar margens) -->
+                        <div class="w-full max-w-sm h-[65%] bg-slate-100 border border-slate-300 shadow-inner p-2 rounded-sm flex items-center justify-center mb-4">
+                            
+                            <!-- 
+                            Adicionámos onmousedown, ontouchstart e onclick. 
+                            Eles bloqueiam o clique de "vazar" para a folha do livro.
+                            -->
+                            <video controls playsinline preload="metadata" 
+                                class="w-full h-full object-contain drop-shadow-md"
+                                onmousedown="event.stopPropagation()"
+                                ontouchstart="event.stopPropagation()"
+                                onclick="event.stopPropagation()">
+                                <!-- Substitua pelo caminho exato do seu vídeo -->
+                                <source src="Fotos das Obras\Apresentação.mp4" type="video/mp4">
+                                O seu navegador não suporta a reprodução deste vídeo.
+                            </video>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
 
                <!-- PÁGINA 4: Obra 1 -->
                 <div class="page paper-texture text-slate-800">
@@ -111,25 +146,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Alice.jpeg" 
-                                 alt="Paisagem iluminada pela lua" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Paisagem iluminada pela lua" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Paisagem iluminada pela lua</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Alice Helena Silva</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-1 leading-tight">Paisagem iluminada pela lua</h3>
+                                <p class="text-sm sm:text-base text-indigo-700 mb-2 font-['Inter'] font-semibold">Alice Helena Silva</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\AlicePaisagemIluminada.png" alt="QR Code Alice" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 5: Obra 2 -->
                 <div class="page paper-texture text-slate-800">
@@ -139,21 +189,35 @@
                         
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
-                            <img src="Fotos das Obras\Alicia 1.jpeg" 
-                                 alt="Feiticeira da lua" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                            <img src="Fotos das Obras/Alicia 1.jpeg" 
+                                alt="Feiticeira da lua" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Feiticeira da lua</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Alicia Michalkiewicz</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Aquarela sobre papel</p>
-                                <p><strong>Dimensões:</strong> 14,5 x 21 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-1 leading-tight">Feiticeira da lua</h3>
+                                <p class="text-sm sm:text-base text-indigo-700 mb-2 font-['Inter'] font-semibold">Alicia Michalkiewicz</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Aquarela sobre papel</p>
+                                    <p><strong>Dimensões:</strong> 14,5 x 21 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\AliciaFeiticeiraDaLua.png" alt="QR Code Alicia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
@@ -169,28 +233,43 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Alicia 2.jpeg" 
-                                 alt="Tempestade no horizonte" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Tempestade no horizonte" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Tempestade no horizonte</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Alicia Michalkiewicz</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Aquarela sobre papel</p>
-                                <p><strong>Dimensões:</strong> 14,5 x 18 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Tempestade no horizonte</h3>
+                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Alicia Michalkiewicz</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Aquarela sobre papel</p>
+                                    <p><strong>Dimensões:</strong> 14,5 x 18 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\AliciaTempestade.png" alt="QR Code Alicia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
 
+
                 <!-- PÁGINA 7: Obra 4 -->
-                <div class="page paper-texture text-slate-800">
+               <div class="page paper-texture text-slate-800">
                     
                     <!-- WRAPPER INTERNO: Protege o nosso layout da animação 3D -->
                     <div class="w-full h-full relative overflow-hidden">
@@ -198,25 +277,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Alicia 3.jpeg" 
-                                 alt="Canção ao luar" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Canção ao luar" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Canção ao luar</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Alicia Michalkiewicz</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Aquarela sobre papel</p>
-                                <p><strong>Dimensões:</strong> 14,5 x 21 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Canção ao luar</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Alicia Michalkiewicz</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Aquarela sobre papel</p>
+                                    <p><strong>Dimensões:</strong> 14,5 x 21 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\AliciaCancaoAoLuar.png" alt="QR Code Alicia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 8: Obra 5 -->
                 <div class="page paper-texture text-slate-800">
@@ -227,25 +321,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Alicia 4.jpeg" 
-                                 alt="A Necromante" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="A Necromante" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">A Necromante</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Alicia Michalkiewicz</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Aquarela sobre papel</p>
-                                <p><strong>Dimensões:</strong> 20 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">A Necromante</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Alicia Michalkiewicz</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Aquarela sobre papel</p>
+                                    <p><strong>Dimensões:</strong> 20 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\AliciaANecromante.png" alt="QR Code Alicia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 9: Obra 6 -->
                 <div class="page paper-texture text-slate-800">
@@ -256,25 +365,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Alicia.jpeg" 
-                                 alt="Holanda" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Holanda" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Holanda</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Alicia Michalkiewicz</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Aquarela sobre papel</p>
-                                <p><strong>Dimensões:</strong> 20 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Holanda</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Alicia Michalkiewicz</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Aquarela sobre papel</p>
+                                    <p><strong>Dimensões:</strong> 20 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\AliciaHolanda.png" alt="QR Code Alicia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 10: Obra 7 -->
                 <div class="page paper-texture text-slate-800">
@@ -285,25 +409,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Alicia 5.jpeg" 
-                                 alt="Cabana na clareira" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Cabana na clareira" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Cabana na clareira</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Alicia Michalkiewicz</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 60 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                 <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Cabana na clareira</h3>
+                                 <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Alicia Michalkiewicz</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 60 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\AliciaCabana.png" alt="QR Code Alicia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 11: Obra 8 -->
                 <div class="page paper-texture text-slate-800">
@@ -314,20 +453,34 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Ana Carolina.jpeg"
-                                 alt="Além da curiosidade" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Além da curiosidade" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Além da curiosidade</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Ana Carolina Fernandes Silva</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 40 x 50 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Além da curiosidade</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Ana Carolina Fernandes Silva</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 40 x 50 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\AnaCarolinaCuriosidade.png" alt="QR Code Ana" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
@@ -343,25 +496,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Ana Julia.jpeg" 
-                                 alt="Primavera cor-de-rosa" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Primavera cor-de-rosa" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Primavera cor-de-rosa</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Anna Júlia dos Santos</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 15 x 20 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Primavera cor-de-rosa</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Anna Júlia dos Santos</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 15 x 20 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\AnnaJuliaPrimavera.png" alt="QR Code Anna" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 13: Obra 10 -->
                 <div class="page paper-texture text-slate-800">
@@ -372,25 +540,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Ana Maria.jpeg" 
-                                 alt="Happy Dog" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Happy Dog" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Happy Dog</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Ana Maria Lippert</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 40 x 50 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Happy Dog</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Ana Maria Lippert</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 40 x 50 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\AnaMariaDog.png" alt="QR Code Ana" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 14: Obra 11 -->
                 <div class="page paper-texture text-slate-800">
@@ -401,25 +584,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Andrei.jpeg" 
-                                 alt="Flower Boy" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Flower Boy" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Flower Boy</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Andrei Mattiello</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Flower Boy</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Andrei Mattiello</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\AndreiFlowerBoy.png" alt="QR Code Andrei" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 15: Obra 12 -->
                 <div class="page paper-texture text-slate-800">
@@ -430,25 +628,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Benjamin.jpeg" 
-                                 alt="Asas da liberdade" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Asas da liberdade" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Asas da liberdade</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Benjhamyn Nunes de Jesus</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 20 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Asas da liberdade</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Benjhamyn Nunes de Jesus</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 20 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\BenjhamynAsas.png" alt="QR Code Benjhamyn" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 16: Obra 13 -->
                 <div class="page paper-texture text-slate-800">
@@ -459,25 +672,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Carolina Zanata.jpeg" 
-                                 alt="O olhar de Chokito" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="O olhar de Chokito" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">O olhar de Chokito</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Carolina Racinoski Zanatta</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 20 x 25 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">O olhar de Chokito</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Carolina Racinoski Zanatta</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 20 x 25 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\CarolinaChokito.png" alt="QR Code Carolina" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 17: Obra 14 -->
                 <div class="page paper-texture text-slate-800">
@@ -488,25 +716,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Daniela.jpeg" 
-                                 alt="Metamorfose" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Metamorfose" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Metamorfose</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Daniela Trentin Nava</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 40 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Metamorfose</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Daniela Trentin Nava</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 40 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\DanielaMetamorfose.png" alt="QR Code Daniela" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 18: Obra 15 -->
                 <div class="page paper-texture text-slate-800">
@@ -517,25 +760,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Denise.jpeg" 
-                                 alt="Entre sombra e luz" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Entre sombra e luz" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Entre sombra e luz</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Denise Gomes de Menezes</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela, resina e massa de modelar</p>
-                                <p><strong>Dimensões:</strong> 50 x 60 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Entre sombra e luz</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Denise Gomes de Menezes</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela, resina e massa de modelar</p>
+                                    <p><strong>Dimensões:</strong> 50 x 60 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\DeniseSombraeLuz.png" alt="QR Code Denise" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 19: Obra 16 -->
                 <div class="page paper-texture text-slate-800">
@@ -546,25 +804,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Dione.jpeg" 
-                                 alt="Árvore da vida" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Árvore da vida" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Árvore da vida</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Dione Inês Christ Milani</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Acrílica sobre tela</p>
-                                <p><strong>Dimensões:</strong> 40 x 60 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Árvore da vida</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Dione Inês Christ Milani</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Acrílica sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 40 x 60 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\DioneArvore.png" alt="QR Code Dione" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 20: Obra 17 -->
                 <div class="page paper-texture text-slate-800">
@@ -575,25 +848,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Douglas.jpeg" 
-                                 alt="Seguro estou nas mãos de Deus" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Seguro estou nas mãos de Deus" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Seguro estou nas mãos de Deus</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Douglas Coutinho</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 40 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Seguro estou nas mãos de Deus</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Douglas Coutinho</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 40 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\CoutinhoMaos.png" alt="QR Code Coutinho" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 21: Obra 18 -->
                 <div class="page paper-texture text-slate-800">
@@ -604,25 +892,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Flavia 1.jpeg" 
-                                 alt="Sem título" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Sem título" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sem título</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Flávia Klianca</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 12 x 12 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sem título</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Flávia Klianca</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 12 x 12 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\FlaviaVela.png" alt="QR Code Flavia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 22: Obra 19 -->
                 <div class="page paper-texture text-slate-800">
@@ -633,25 +936,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Flavia 2.jpeg" 
-                                 alt="Sem título" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Sem título" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sem título</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Flávia Klianca</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sem título</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Flávia Klianca</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\FlaviaGato.png" alt="QR Code Flavia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 23: Obra 20 -->
                 <div class="page paper-texture text-slate-800">
@@ -662,25 +980,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Flavia 3.jpeg" 
-                                 alt="Sem título" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Sem título" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sem título</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Flávia Klianca</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sem título</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Flávia Klianca</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\FlaviaLuas.png" alt="QR Code Flavia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 24: Obra 21 -->
                 <div class="page paper-texture text-slate-800">
@@ -691,25 +1024,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Flavia 4.jpeg" 
-                                 alt="Sem título" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Sem título" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sem título</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Flávia Klianca</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 20 x 15 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sem título</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Flávia Klianca</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 20 x 15 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\FlaviaBolhas.png" alt="QR Code Flavia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 25: Obra 22 -->
                 <div class="page paper-texture text-slate-800">
@@ -720,25 +1068,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Flavia 5.jpeg" 
-                                 alt="Sem título" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Sem título" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sem título</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Flávia Klianca</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 40 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sem título</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Flávia Klianca</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                     <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 40 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\FlaviaAnjo.png" alt="QR Code Flavia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 26: Obra 23 -->
                 <div class="page paper-texture text-slate-800">
@@ -749,25 +1112,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Gabriela.jpeg" 
-                                 alt="Doce descanso" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Doce descanso" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Doce descanso</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Gabriela Brandalize Zardo</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 20 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Doce descanso</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Gabriela Brandalize Zardo</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 20 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\GabrielaDescanso.png" alt="QR Code Gabriela" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 27: Obra 24 -->
                 <div class="page paper-texture text-slate-800">
@@ -778,25 +1156,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Helen.jpg" 
-                                 alt="Além dos olhos" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Além dos olhos" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Além dos olhos</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Helen Machado Rosa Fruhauf</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 70 x 90 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Além dos olhos</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Helen Machado Rosa Fruhauf</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 70 x 90 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\HelenAlemDosOlhos.png" alt="QR Code Helen" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 28: Obra 25 -->
                 <div class="page paper-texture text-slate-800">
@@ -807,25 +1200,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Isadora.jpeg" 
-                                 alt="Unicórnio Encantado" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Unicórnio Encantado" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Unicórnio Encantado</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Isadora Maria Lippert</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 50 x 40 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Unicórnio Encantado</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Isadora Maria Lippert</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 50 x 40 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\IsadoraUnicornio.png" alt="QR Code Isadora" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 29: Obra 26 -->
                 <div class="page paper-texture text-slate-800">
@@ -836,25 +1244,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Isadora 2.jpeg" 
-                                 alt="O mundo com magia" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="O mundo com magia" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">O mundo com magia</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Isadora Maria Lippert</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 40 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                               <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">O mundo com magia</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Isadora Maria Lippert</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 40 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\IsadoraMundoComMagia.png" alt="QR Code Isadora" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 30: Obra 27 -->
                 <div class="page paper-texture text-slate-800">
@@ -865,25 +1288,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\João Paulo.jpeg" 
-                                 alt="O Trem entre as montanhas" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="O Trem entre as montanhas" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">O Trem entre as montanhas</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">João Paulo Alflen Nunes</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 34 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">O Trem entre as montanhas</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">João Paulo Alflen Nunes</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 34 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\JoaoTrem.png" alt="QR Code Joao" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 31: Obra 28 -->
                 <div class="page paper-texture text-slate-800">
@@ -894,28 +1332,43 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Karoline.jpeg" 
-                                 alt="Florescendo" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Florescendo" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Florescendo</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Karoline Jaqueline Moreira</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 40 x 50 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Florescendo</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Karoline Jaqueline Moreira</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 40 x 50 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\KarolineFlorescendo.png" alt="QR Code Karoline" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
 
+
                 <!-- PÁGINA 32: Obra 29 -->
-                <div class="page paper-texture text-slate-800">
+               <div class="page paper-texture text-slate-800">
                     
                     <!-- WRAPPER INTERNO: Protege o nosso layout da animação 3D -->
                     <div class="w-full h-full relative overflow-hidden">
@@ -923,25 +1376,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Leandro.jpeg" 
-                                 alt="Entre céu e galho" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Entre céu e galho" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Entre céu e galho</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Leandro Charava dos Santos</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 40 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Entre céu e galho</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Leandro Charava dos Santos</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 40 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\LeandroCeuEGalho.png" alt="QR Code Leandro" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 33: Obra 30 -->
                 <div class="page paper-texture text-slate-800">
@@ -952,25 +1420,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Lilian.jpeg" 
-                                 alt="Aurora" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Aurora" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Aurora</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Lilian Michelle Michelin</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela e folhas metálicas</p>
-                                <p><strong>Dimensões:</strong> 40 x 60 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Aurora</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Lilian Michelle Michelin</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela e folhas metálicas</p>
+                                    <p><strong>Dimensões:</strong> 40 x 60 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\LilianCavaloBranco.png" alt="QR Code Lilian" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 34: Obra 31 -->
                 <div class="page paper-texture text-slate-800">
@@ -981,25 +1464,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Lilian 2.jpeg" 
-                                 alt="Sopro da liberdade" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Sopro da liberdade" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sopro da liberdade</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Lilian Michelle Michelin</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela e folhas metálicas</p>
-                                <p><strong>Dimensões:</strong> 40 x 60 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sopro da liberdade</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Lilian Michelle Michelin</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela e folhas metálicas</p>
+                                    <p><strong>Dimensões:</strong> 40 x 60 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\LilianCavaloMarrom.png" alt="QR Code Lilian" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 35: Obra 32 -->
                 <div class="page paper-texture text-slate-800">
@@ -1010,25 +1508,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Luana 1.jpeg" 
-                                 alt="Luzes brilhantes" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Luzes brilhantes" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Luzes brilhantes</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Luana Caroline Mergulhão</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Luzes brilhantes</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Luana Caroline Mergulhão</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\LuanaLuzes.png" alt="QR Code Luana" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 36: Obra 33 -->
                 <div class="page paper-texture text-slate-800">
@@ -1039,25 +1552,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Luana 2.jpeg" 
-                                 alt="Destiny" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Destiny" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Destiny</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Luana Caroline Mergulhão</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Destiny</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Luana Caroline Mergulhão</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\LuanaDestiny.png" alt="QR Code Luana" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 37: Obra 34 -->
                 <div class="page paper-texture text-slate-800">
@@ -1068,25 +1596,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Mariah.jpeg" 
-                                 alt="Doce ronronar" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Doce ronronar" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Doce ronronar</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Mariah Michelin Ventura Catarino</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 40 x 50 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Doce ronronar</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Mariah Michelin Ventura Catarino</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 40 x 50 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\MariahRonronar.png" alt="QR Code Mariah" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 38: Obra 35 -->
                 <div class="page paper-texture text-slate-800">
@@ -1097,25 +1640,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Mariah 2.jpeg" 
-                                 alt="Bico de ouro" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Bico de ouro"
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Bico de ouro</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Mariah Michelin Ventura Catarino</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 60 x 40 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Bico de ouro</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Mariah Michelin Ventura Catarino</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 60 x 40 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\MariahTucano.png" alt="QR Code Mariah" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 39: Obra 36 -->
                 <div class="page paper-texture text-slate-800">
@@ -1126,25 +1684,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Mariana.jpeg" 
-                                 alt="Guardiã das Águas" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Guardiã das Águas" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Guardiã das Águas</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Mariana Fernandes Belan</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela e massa de modelagem</p>
-                                <p><strong>Dimensões:</strong> 50 x 80 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Guardiã das Águas</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Mariana Fernandes Belan</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela e massa de modelagem</p>
+                                    <p><strong>Dimensões:</strong> 50 x 80 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\MarianaTartaruga.png" alt="QR Code Mariana" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 40: Obra 37 -->
                 <div class="page paper-texture text-slate-800">
@@ -1155,20 +1728,34 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Nori.jpeg" 
-                                 alt="Cores" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Cores" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Cores</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Nori Bastian</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Guache sobre tela</p>
-                                <p><strong>Dimensões:</strong> 20 x 30 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Cores</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Nori Bastian</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Guache sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 20 x 30 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\NoriCores.png" alt="QR Code Nori" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
@@ -1184,25 +1771,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Rosangela.jpeg" 
-                                 alt="Reflexos" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Reflexos" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Reflexos</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Rosangela Aparecida Botinha Assumpção</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 40 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Reflexos</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Rosangela Aparecida Botinha Assumpção</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 40 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\RosangelaReflexos.png" alt="QR Code Rosangela" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 42: Obra 39 -->
                 <div class="page paper-texture text-slate-800">
@@ -1213,25 +1815,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Suzan.jpeg" 
-                                 alt="Tupã" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Tupã" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Tupã</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Suzan Kely Borges Piovesan</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 40 x 50 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Tupã</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Suzan Kely Borges Piovesan</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 40 x 50 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\SuzanTupa.png" alt="QR Code Suzan" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 43: Obra 40 -->
                 <div class="page paper-texture text-slate-800">
@@ -1242,25 +1859,40 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Vitoria 2.jpeg" 
-                                 alt="Naturara" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Naturara" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Naturara</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Vitória Maria Lippert</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 30 x 50 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Naturara</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Vitória Maria Lippert</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 30 x 50 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\VitoriaArara.png" alt="QR Code Vitoria" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
 
                 <!-- PÁGINA 44: Obra 41 -->
                 <div class="page paper-texture text-slate-800">
@@ -1271,25 +1903,128 @@
                         <!-- Contentor da Imagem -->
                         <div class="absolute top-6 left-6 right-6 bottom-40 bg-slate-100 border border-slate-300 shadow-inner flex items-center justify-center p-2 rounded-sm">
                             <img src="Fotos das Obras\Vitória.jpeg" 
-                                 alt="Sol Encantado" 
-                                 class="max-w-full max-h-full object-contain drop-shadow-md">
+                                alt="Sol Encantado" 
+                                class="max-w-full max-h-full object-contain drop-shadow-md">
                         </div>
                         
-                        <!-- Informações da Obra -->
-                        <div class="absolute bottom-6 left-6 right-6 font-serif-academic flex flex-col">
-                            <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sol Encantado</h3>
-                            <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Vitória Maria Lippert</p>
+                        <!-- Informações da Obra + QR Code lado a lado -->
+                        <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4 font-serif-academic">
                             
-                            <div class="text-xs text-slate-600 space-y-1 font-['Inter']">
-                                <p><strong>Técnica:</strong> Óleo sobre tela</p>
-                                <p><strong>Dimensões:</strong> 50 x 40 cm</p>
-                                <p><strong>Ano:</strong> 2025</p>
+                            <!-- Bloco de Texto (ocupa o espaço à esquerda) -->
+                            <div class="flex-1 min-w-0 pr-2">
+                                <h3 class="text-xl font-bold text-slate-900 mb-1 leading-tight">Sol Encantado</h3>
+                                <p class="text-base text-indigo-700 mb-3 font-['Inter'] font-semibold">Vitória Maria Lippert</p>
+                                
+                                <div class="text-[11px] sm:text-xs text-slate-600 space-y-0.5 font-['Inter']">
+                                    <p><strong>Técnica:</strong> Óleo sobre tela</p>
+                                    <p><strong>Dimensões:</strong> 50 x 40 cm</p>
+                                    <p><strong>Ano:</strong> 2025</p>
+                                </div>
                             </div>
+
+                            <!-- Bloco do QR Code (fixado à direita) -->
+                            <div class="shrink-0 flex flex-col items-center">
+                                <div class="p-1 bg-white border border-slate-300 rounded shadow-sm">
+                                    <!-- Substitua pelo caminho da imagem do QR Code desta obra -->
+                                    <img src="QRcodes\VitoriaSol.png" alt="QR Code Vitoria" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                                <span class="text-[9px] text-slate-500 font-['Inter'] mt-1 tracking-wider uppercase">áudio-guia</span>
+                            </div>
+
                         </div>
                         
                     </div>
                     
                 </div>
+
+                <!-- PÁGINA: Bastidores 1 -->
+                <div class="page paper-texture text-slate-800">
+                    <div class="w-full h-full relative overflow-hidden flex flex-col p-6">
+                        
+                        <!-- Título da Secção -->
+                        <h3 class="text-xl font-bold font-serif-academic text-slate-900 border-b-2 border-indigo-800 pb-2 mb-4 shrink-0 text-center">
+                            Bastidores do Projeto
+                        </h3>
+                        
+                        <!-- Contentor das Fotos -->
+                        <div class="flex-1 flex flex-col gap-4 min-h-0">
+                            
+                            <!-- Foto 3 -->
+                            <div class="flex-1 bg-slate-100 border border-slate-300 shadow-inner p-2 rounded-sm flex items-center justify-center min-h-0">
+                                <img src="Fotos das Obras\Bastidores 1.jpeg" alt="Bastidores 3" class="max-w-full max-h-full object-contain drop-shadow-md">
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- PÁGINA: Bastidores 2 -->
+                <div class="page paper-texture text-slate-800">
+                    <div class="w-full h-full relative overflow-hidden flex flex-col p-6">
+                        
+                        <!-- Título da Secção -->
+                        <h3 class="text-xl font-bold font-serif-academic text-slate-900 border-b-2 border-indigo-800 pb-2 mb-4 shrink-0 text-center">
+                            Bastidores do Projeto
+                        </h3>
+                        
+                        <!-- Contentor das Fotos -->
+                        <div class="flex-1 flex flex-col gap-4 min-h-0">
+                            
+                            <!-- Foto 3 -->
+                            <div class="flex-1 bg-slate-100 border border-slate-300 shadow-inner p-2 rounded-sm flex items-center justify-center min-h-0">
+                                <img src="Fotos das Obras\Bastidores 2.jpeg" alt="Bastidores 3" class="max-w-full max-h-full object-contain drop-shadow-md">
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- PÁGINA: Bastidores 3 -->
+                <div class="page paper-texture text-slate-800">
+                    <div class="w-full h-full relative overflow-hidden flex flex-col p-6">
+                        
+                        <!-- Título da Secção -->
+                        <h3 class="text-xl font-bold font-serif-academic text-slate-900 border-b-2 border-indigo-800 pb-2 mb-4 shrink-0 text-center">
+                            Bastidores do Projeto
+                        </h3>
+                        
+                        <!-- Contentor das Fotos -->
+                        <div class="flex-1 flex flex-col gap-4 min-h-0">
+                            
+                            <!-- Foto 3 -->
+                            <div class="flex-1 bg-slate-100 border border-slate-300 shadow-inner p-2 rounded-sm flex items-center justify-center min-h-0">
+                                <img src="Fotos das Obras\Bastidores 3.jpeg" alt="Bastidores 3" class="max-w-full max-h-full object-contain drop-shadow-md">
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- PÁGINA: Bastidores 4 -->
+                <div class="page paper-texture text-slate-800">
+                    <div class="w-full h-full relative overflow-hidden flex flex-col p-6">
+                        
+                        <!-- Título da Secção -->
+                        <h3 class="text-xl font-bold font-serif-academic text-slate-900 border-b-2 border-indigo-800 pb-2 mb-4 shrink-0 text-center">
+                            Bastidores do Projeto
+                        </h3>
+                        
+                        <!-- Contentor das Fotos -->
+                        <div class="flex-1 flex flex-col gap-4 min-h-0">
+                            
+                            <!-- Foto 3 -->
+                            <div class="flex-1 bg-slate-100 border border-slate-300 shadow-inner p-2 rounded-sm flex items-center justify-center min-h-0">
+                                <img src="Fotos das Obras\Bastidores 4.jpeg" alt="Bastidores 3" class="max-w-full max-h-full object-contain drop-shadow-md">
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+
 
                 <!-- PÁGINA 45: Conclusão / Impacto -->
                 <div class="page p-6 md:p-8 flex flex-col paper-texture text-slate-800">
@@ -1317,6 +2052,8 @@
                     
                     <h3 class="text-xl font-bold font-serif-academic text-white w-full">Ateliê Traços e Cores</h3>
                     <p class="text-sm text-slate-400 mt-2 w-full">UTFPR - Campus Toledo</p>
+                    <br>
+                    <p class="text-sm text-slate-300 font-light max-w-[80%] mx-auto mb-10">Vice-coordenação: Dione Ines Christ Milani<br><br>Fotos e vídeos: João Paulo Souza de Moura<br><br>Desenvolvedor do site: Bruno Stelle dos Santos</p>
                 </div>
 
             </div>
