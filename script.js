@@ -46,17 +46,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const pageFlip = new St.PageFlip(bookElement, {
         width: width,
         height: height,
-        size: 'stretch',
-        minWidth: 280,
+        size: 'stretch',   // Volte para stretch (o modo mais fiável da biblioteca)
+        minWidth: 200,
         maxWidth: 600,
-        minHeight: 400,
+        minHeight: 250,    // Valor reduzido! Permite que a escala desça em monitores pequenos.
         maxHeight: 800,
         maxShadowOpacity: 0.4,
         showCover: true,
         mobileScrollSupport: false
     });
 
+    // Restauramos a forma simples e direta de carregar as páginas (sem setTimeouts complicados)
     pageFlip.loadFromHTML(document.querySelectorAll('.page'));
+
+    pageFlip.on('init', () => {
+        loadingState.style.display = 'none';
+        bookElement.classList.remove('hidden'); // Remove o hidden original
+        elPageTotal.textContent = pageFlip.getPageCount();
+        const currentIndex = pageFlip.getCurrentPageIndex();
+        updateButtons(currentIndex);
+        centerBook(currentIndex);
+    });
 
     // --- NOVA FUNÇÃO: Centraliza o livro dependendo da página ---
     function centerBook(pageIndex) {
@@ -83,12 +93,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicialização
     pageFlip.on('init', () => {
         loadingState.style.display = 'none';
-        bookElement.classList.remove('hidden');
+        bookElement.classList.remove('hidden'); // Remove o hidden original
         elPageTotal.textContent = pageFlip.getPageCount();
-        
         const currentIndex = pageFlip.getCurrentPageIndex();
         updateButtons(currentIndex);
-        centerBook(currentIndex); // Centraliza a capa assim que carregar
+        centerBook(currentIndex);
     });
 
     // Evento disparado sempre que a página vira
