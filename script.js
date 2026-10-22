@@ -60,38 +60,47 @@ document.addEventListener('DOMContentLoaded', function() {
     pageFlip.loadFromHTML(document.querySelectorAll('.page'));
 
     pageFlip.on('init', () => {
-        // Esconde o loading e mostra o livro
         document.getElementById('loading-state').style.display = 'none';
         bookElement.classList.remove('hidden');
         
-        // Atualiza a interface
         document.getElementById('page-total').textContent = pageFlip.getPageCount();
         const currentIndex = pageFlip.getCurrentPageIndex();
         updateButtons(currentIndex);
-        centerBook(currentIndex);
+
+        requestAnimationFrame(() => {
+            centerBook(currentIndex);
+        });
     });
 
     // --- NOVA FUNÇÃO: Centraliza o livro dependendo da página ---
     function centerBook(pageIndex) {
-        // No celular é sempre uma página por vez, não precisa deslizar
-        if (pageFlip.getOrientation() === 'portrait') {
-            bookElement.style.transform = 'translateX(0)';
+        if (window.innerWidth < 768 || pageFlip.getOrientation() === 'portrait') {
+            bookElement.style.transform = 'translateX(0px)';
             return;
         }
 
         const totalPages = pageFlip.getPageCount();
+        const bounds = pageFlip.getBoundsRect();
+        const shift = bounds.pageWidth / 2; // Medida exata de meia página no monitor atual
 
         if (pageIndex === 0) {
-            // Capa (primeira página): move 25% para a esquerda para centralizar a banda direita
-            bookElement.style.transform = 'translateX(-25%)';
-        } else if (pageIndex === totalPages - 1) {
-            // Contracapa (última página): move 25% para a direita para centralizar a banda esquerda
-            bookElement.style.transform = 'translateX(25%)';
+            // Centraliza a capa frontal
+            bookElement.style.transform = `translateX(-${shift}px)`;
+        } else if (pageIndex === totalPages - 1 && totalPages % 2 === 0) {
+            // Centraliza a contracapa
+            bookElement.style.transform = `translateX(${shift}px)`;
         } else {
-            // Livro aberto (páginas internas): volta ao centro normal
-            bookElement.style.transform = 'translateX(0)';
+            // Livro aberto no meio da tela
+            bookElement.style.transform = 'translateX(0px)';
         }
     }
+
+    // Recalcula o centro automaticamente se o utilizador redimensionar a janela ou mudar de monitor
+    window.addEventListener('resize', () => {
+        setTimeout(() => {
+            centerBook(pageFlip.getCurrentPageIndex());
+        }, 100);
+    });
 
     // Inicialização
     pageFlip.on('init', () => {
