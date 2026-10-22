@@ -15,13 +15,76 @@
     <link rel="stylesheet" href="style.css">
     
     <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.js"></script>
+    <style>
+        /* 1. Converte automaticamente as páginas de obras para Flexbox (impede sobreposição) */
+        .page > div:has(.bottom-40) {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            padding: 0.85rem !important;
+            gap: 0.5rem !important;
+        }
+
+        /* Moldura da pintura se adapta ao espaço livre sem nunca ser coberta pelo texto */
+        .page > div:has(.bottom-40) > .bottom-40 {
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            flex: 1 1 0% !important;
+            min-height: 0 !important;
+            padding: 0.35rem !important;
+        }
+
+        /* Ficha técnica + QR Code fixos na base com tamanho compacto */
+        .page > div:has(.bottom-40) > .bottom-6 {
+            position: relative !important;
+            bottom: auto !important;
+            left: auto !important;
+            right: auto !important;
+            flex-shrink: 0 !important;
+            gap: 0.5rem !important;
+            align-items: center !important;
+        }
+
+        /* Compactação dos textos da ficha técnica */
+        .page > div:has(.bottom-40) > .bottom-6 h3 {
+            font-size: 0.95rem !important;
+            line-height: 1.15 !important;
+            margin-bottom: 0.1rem !important;
+        }
+
+        .page > div:has(.bottom-40) > .bottom-6 > div > p {
+            font-size: 0.8rem !important;
+            line-height: 1.15 !important;
+            margin-bottom: 0.25rem !important;
+        }
+
+        .page > div:has(.bottom-40) > .bottom-6 .text-xs,
+        .page > div:has(.bottom-40) > .bottom-6 .sm\:text-xs {
+            font-size: 0.68rem !important;
+            line-height: 1.2 !important;
+        }
+
+        .page > div:has(.bottom-40) > .bottom-6 .space-y-1 > :not([hidden]) ~ :not([hidden]),
+        .page > div:has(.bottom-40) > .bottom-6 .space-y-0\.5 > :not([hidden]) ~ :not([hidden]) {
+            margin-top: 0.1rem !important;
+        }
+
+        /* Reduz levemente o QR Code para dar mais espaço horizontal aos títulos */
+        .page > div:has(.bottom-40) > .bottom-6 img {
+            width: 3.25rem !important;
+            height: 3.25rem !important;
+        }
+</style>
 </head>
 <body class="h-full bg-slate-100 dark:bg-slate-900 flex flex-col overflow-hidden selection:bg-indigo-200 selection:text-indigo-900 transition-colors duration-300">
 
     <!-- Cabeçalho (Mantido com o botão de Modo Escuro) -->
     <header class="w-full bg-white dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700 px-4 py-3 flex items-center justify-between z-30 shrink-0 shadow-sm transition-colors duration-300">
         <div class="flex items-center gap-3">
-            <img src="Fotos das Obras/logo_utfpr.png" alt="Logótipo UTFPR" class="h-10 w-auto object-contain">
+            <img src="Fotos das Obras\logo_utfpr.png" alt="Logótipo UTFPR" class="h-10 w-auto object-contain">
             <div>
                 <h1 class="text-sm md:text-base font-bold text-slate-800 dark:text-slate-100 tracking-tight">
                     Exposição Traços e Cores
@@ -72,27 +135,29 @@
                     
                     <!-- CONTEÚDO DA CAPA -->
                     <!-- O z-20 e relative garantem que o texto fica na camada superior -->
-                    <div class="relative z-20 flex flex-col items-center justify-center w-full h-full p-6 md:p-10">
+                    <!-- Conteúdo da Capa Compactado -->
+                    <div class="relative z-20 flex flex-col items-center justify-between w-full h-full p-5 sm:p-7">
 
-                        <br><br>
-                        
-                        
-                        <h2 class="text-3xl md:text-5xl font-bold font-serif-academic leading-tight mb-6 text-white drop-shadow-lg">Ateliê<br>Traços e Cores</h2>
-                        
-                        <div class="h-1 w-24 bg-indigo-500 mx-auto rounded mb-8 shadow-md"></div>
-
-                        <br><br><br><br>
-                        
-                        <!-- Logótipo -->
-                        <img src="Fotos das Obras\logo_utfpr_branco.png" alt="Logótipo UTFPR" class="h-14 w-auto object-contain mx-auto block mb-8 drop-shadow-lg">
-                        
-                        <p class="text-sm text-white font-light max-w-[80%] mx-auto mb-10 drop-shadow-md">UTFPR - Campus Toledo<br>Instagram: @tracosecores_utfprtd</p>
-                        
-                        <div class="mt-auto text-xs text-white w-full drop-shadow-md">
-                            <p>Coordenação: Prof.ª Rosangela A. B. Assumpção</p>
-                            <p class="mt-2 font-mono">2026</p>
+                        <div class="mt-2">
+                            <h2 class="text-2xl sm:text-3xl font-bold font-serif-academic leading-tight text-white drop-shadow-lg">
+                                Ateliê<br>Traços e<br>Cores
+                            </h2>
                         </div>
-                        
+
+                        <div class="flex flex-col items-center my-auto">
+                            <img src="Fotos das Obras\logo_utfpr_branco.png" alt="Logótipo UTFPR" class="h-12 sm:h-16 w-auto object-contain mx-auto block mb-3 drop-shadow-lg">
+                            <p class="text-xs text-white font-light drop-shadow-md leading-relaxed">
+                                UTFPR - Campus Toledo<br>
+                                Instagram:<br>
+                                @tracosecores_utfprtd
+                            </p>
+                        </div>
+
+                        <div class="text-[11px] text-white w-full drop-shadow-md">
+                            <p>Coordenação: Prof.ª Rosangela A. B. Assumpção</p>
+                            <p class="mt-1 font-mono">2026</p>
+                        </div>
+
                     </div>
                 </div>
 
@@ -102,11 +167,11 @@
                 </div>
 
                 <!-- PÁGINA 3: Apresentação Institucional -->
-                <div class="page p-6 md:p-8 flex flex-col paper-texture text-slate-800">
-                    <h3 class="text-xl font-bold font-serif-academic text-slate-900 border-b-2 border-indigo-800 pb-2 mb-4">
+                <div class="page p-4 sm:p-5 flex flex-col paper-texture text-slate-800">
+                    <h3 class="text-base sm:text-lg font-bold font-serif-academic text-slate-900 border-b-2 border-indigo-800 pb-1 mb-2">
                         Apresentação e Curadoria
                     </h3>
-                    <div class="space-y-4 text-sm leading-relaxed text-justify text-slate-700 overflow-y-auto no-scrollbar">
+                    <div class="space-y-2 text-[11px] leading-snug text-justify text-slate-700 overflow-y-auto no-scrollbar">
                         <p>
                             O Projeto de Extensão "Fazendo Arte com a UTFPR - Ateliê Traços e Cores" é uma iniciativa vinculada à Universidade Tecnológica Federal do Paraná – Campus Toledo. Tem como objetivo despertar e desenvolver o potencial artístico dos participantes.
                         </p>
