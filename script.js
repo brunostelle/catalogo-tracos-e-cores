@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pageFlip = new St.PageFlip(bookElement, {
         width: 400,
         height: 600,
-        size: 'stretch',   // Modo mais seguro, nunca bloqueia o carregamento
+        size: 'stretch',
         minWidth: 200,
         maxWidth: 600,
         minHeight: 250,
@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileScrollSupport: false
     });
 
-    // Restauramos a forma simples e direta de carregar as páginas (sem setTimeouts complicados)
     pageFlip.loadFromHTML(document.querySelectorAll('.page'));
 
     pageFlip.on('init', () => {
@@ -72,7 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- NOVA FUNÇÃO: Centraliza o livro dependendo da página ---
     function centerBook(pageIndex) {
         if (window.innerWidth < 768 || pageFlip.getOrientation() === 'portrait') {
             bookElement.style.transform = 'translateX(0px)';
@@ -81,47 +79,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const totalPages = pageFlip.getPageCount();
         const bounds = pageFlip.getBoundsRect();
-        const shift = bounds.pageWidth / 2; // Medida exata de meia página no monitor atual
+        const shift = bounds.pageWidth / 2;
 
         if (pageIndex === 0) {
-            // Centraliza a capa frontal
             bookElement.style.transform = `translateX(-${shift}px)`;
         } else if (pageIndex === totalPages - 1 && totalPages % 2 === 0) {
-            // Centraliza a contracapa
             bookElement.style.transform = `translateX(${shift}px)`;
         } else {
-            // Livro aberto no meio da tela
             bookElement.style.transform = 'translateX(0px)';
         }
     }
 
-    // Recalcula o centro automaticamente se o utilizador redimensionar a janela ou mudar de monitor
     window.addEventListener('resize', () => {
         setTimeout(() => {
             centerBook(pageFlip.getCurrentPageIndex());
         }, 100);
     });
 
-    // Inicialização
     pageFlip.on('init', () => {
         loadingState.style.display = 'none';
-        bookElement.classList.remove('hidden'); // Remove o hidden original
+        bookElement.classList.remove('hidden');
         elPageTotal.textContent = pageFlip.getPageCount();
         const currentIndex = pageFlip.getCurrentPageIndex();
         updateButtons(currentIndex);
         centerBook(currentIndex);
     });
 
-    // Evento disparado sempre que a página vira
     pageFlip.on('flip', (e) => {
         const currentPage = e.data + 1;
         elPageCurrent.textContent = currentPage;
         
         updateButtons(e.data);
-        centerBook(e.data); // Desliza o livro se chegar nas pontas
+        centerBook(e.data);
     });
 
-    // Recalcula o centro se o usuário redimensionar a janela do navegador
     window.addEventListener('resize', () => {
         centerBook(pageFlip.getCurrentPageIndex());
     });
