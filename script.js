@@ -1,117 +1,45 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const darkIcon = document.getElementById('theme-toggle-dark-icon');
-    const lightIcon = document.getElementById('theme-toggle-light-icon');
+body {
+    font-family: 'Inter', sans-serif;
+    overscroll-behavior-y: none; /* Previne o "pulo" ao rolar no mobile */
+}
 
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
-        lightIcon.classList.remove('hidden');
-    } else {
-        darkIcon.classList.remove('hidden');
-    }
+.font-serif-academic {
+    font-family: 'Merriweather', serif;
+}
 
-    themeToggleBtn.addEventListener('click', function() {
-        darkIcon.classList.toggle('hidden');
-        lightIcon.classList.toggle('hidden');
+/* Estilos base das páginas internas */
+.page {
+    background-color: #fdfdfc; /* Cor de papel levemente off-white */
+    overflow: hidden;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.03); /* Sombra interna suave */
+}
 
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('color-theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('color-theme', 'dark');
-        }
-    });
-    
-    const bookElement = document.getElementById('book');
-    const loadingState = document.getElementById('loading-state');
-    const btnPrev = document.getElementById('btn-prev');
-    const btnNext = document.getElementById('btn-next');
-    const elPageCurrent = document.getElementById('page-current');
-    const elPageTotal = document.getElementById('page-total');
+/* Estilo para páginas de Capa Dura (Hardcover) */
+.page-hard {
+    background-color: #1e293b; /* Azul escuro elegante */
+    color: #f8fafc;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.4);
+}
 
-    bookElement.style.transition = 'transform 0.6s ease-in-out';
+/* Sombras para simular o miolo / encadernação no centro do livro */
+.page-left {
+    box-shadow: inset -15px 0 30px -15px rgba(0, 0, 0, 0.15);
+}
+.page-right {
+    box-shadow: inset 15px 0 30px -15px rgba(0, 0, 0, 0.15);
+}
 
-    const isMobile = window.innerWidth < 768;
-    const width = isMobile ? 320 : 450;
-    const height = isMobile ? 480 : 600;
+/* Textura sutil pontilhada para imitar papel impresso */
+.paper-texture {
+    background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+    background-size: 12px 12px;
+}
 
-    const pageFlip = new St.PageFlip(bookElement, {
-        width: width,
-        height: height,
-        size: 'stretch',
-        minWidth: 200,
-        maxWidth: 600,
-        minHeight: 250,
-        maxHeight: 800,
-        maxShadowOpacity: 0.4,
-        showCover: true,
-        mobileScrollSupport: false
-    });
-
-    pageFlip.loadFromHTML(document.querySelectorAll('.page'));
-
-    pageFlip.on('init', () => {
-        loadingState.style.display = 'none';
-        bookElement.classList.remove('hidden');
-        elPageTotal.textContent = pageFlip.getPageCount();
-        const currentIndex = pageFlip.getCurrentPageIndex();
-        updateButtons(currentIndex);
-        centerBook(currentIndex);
-    });
-
-    function centerBook(pageIndex) {
-        if (pageFlip.getOrientation() === 'portrait') {
-            bookElement.style.transform = 'translateX(0)';
-            return;
-        }
-
-        const totalPages = pageFlip.getPageCount();
-
-        if (pageIndex === 0) {
-            bookElement.style.transform = 'translateX(-25%)';
-        } else if (pageIndex === totalPages - 1) {
-            bookElement.style.transform = 'translateX(25%)';
-        } else {
-            bookElement.style.transform = 'translateX(0)';
-        }
-    }
-
-    pageFlip.on('init', () => {
-        loadingState.style.display = 'none';
-        bookElement.classList.remove('hidden');
-        elPageTotal.textContent = pageFlip.getPageCount();
-        const currentIndex = pageFlip.getCurrentPageIndex();
-        updateButtons(currentIndex);
-        centerBook(currentIndex);
-    });
-
-    pageFlip.on('flip', (e) => {
-        const currentPage = e.data + 1;
-        elPageCurrent.textContent = currentPage;
-        
-        updateButtons(e.data);
-        centerBook(e.data); 
-    });
-
-    window.addEventListener('resize', () => {
-        centerBook(pageFlip.getCurrentPageIndex());
-    });
-
-    function updateButtons(pageIndex) {
-        btnPrev.disabled = pageIndex === 0;
-        btnNext.disabled = pageIndex === pageFlip.getPageCount() - 1;
-    }
-
-    btnPrev.addEventListener('click', () => pageFlip.flipPrev());
-    btnNext.addEventListener('click', () => pageFlip.flipNext());
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight') pageFlip.flipNext();
-        else if (e.key === 'ArrowLeft') pageFlip.flipPrev();
-    });
-
-    window.flipToPage = function(pageIndexZeroBased) {
-        pageFlip.flip(pageIndexZeroBased);
-    };
-});
+/* Utilitário para ocultar barra de rolagem onde necessário */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
